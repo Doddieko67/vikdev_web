@@ -16,17 +16,6 @@ async function uploadLocalPdf(filePath) {
     },
   });
 
-  // Wait for the file to be processed.
-  let getFile = await ai.files.get({ name: file.name });
-  while (getFile.state === "PROCESSING") {
-    getFile = await ai.files.get({ name: file.name });
-    console.log(`current file status: ${getFile.state}`);
-    console.log("File is still processing, retrying in 5 seconds");
-
-    await new Promise((resolve) => {
-      setTimeout(resolve, 5000);
-    });
-  }
   if (file.state === "FAILED") {
     throw new Error("File processing failed.");
   }
