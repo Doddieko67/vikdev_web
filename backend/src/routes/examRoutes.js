@@ -16,9 +16,9 @@ router.post('/upload_files',
   // Validación después de multer para archivos
   (req, res, next) => {
     // Validar que req.body tiene los campos necesarios después de multer
-    if (!req.body || !req.body.prompt || !req.body.tiempo_limite_segundos) {
+    if (!req.body || !req.body.tiempo_limite_segundos) {
       return res.status(400).json({
-        error: 'Faltan campos requeridos: prompt, tiempo_limite_segundos'
+        error: 'Faltan campos requeridos: tiempo_limite_segundos'
       });
     }
     next();
