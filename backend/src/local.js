@@ -36,7 +36,10 @@ async function uploadLocalPdf(filePath) {
 
 export async function content_documents(prompt, targetDirectory) {
   // Add the file to the contents.
-  const content = [prompt];
+  const content = [];
+  if (prompt) {
+    content.push(prompt);
+  }
   const filenames = await listFiles(targetDirectory);
   console.log(filenames);
   for (const filename of filenames) {
